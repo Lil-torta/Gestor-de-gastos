@@ -13,7 +13,9 @@ CATEGORIAS = {
     '.jpeg': 'Imagenes',
     '.zip': 'Comprimidos',
     '.exe': 'Programas',
-    '.html': 'Web'
+    '.html': 'Web',
+    '.htm': 'Web',
+    '.py': 'Python'
 }
 
 logging.basicConfig(
