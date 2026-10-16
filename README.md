@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Organizador de archivos
 
 Script hecho en python el cual tiene como objetivo analizar una carpeta y mueve cada archivo a una subcarpeta defiriendo de su extension. Por defecto **solo simula**: no mueve nada hasta que se lo pidas
@@ -119,3 +120,7 @@ Scrip-organizador-de-archivos/
 - [ ] Mostrar una advertencia (`WARNING`) cuando una extensión cae en `Otros`.
 - [ ] Pruebas automáticas con `pytest`.
 - [ ] Cargar las categorías desde un archivo de configuración (JSON).
+=======
+# Gestor-de-gastos
+Repositorio que trata sobre un gestor de gastos
+>>>>>>> c3f3036b44d005c2f042e1ffecc7eed9605b2b07
