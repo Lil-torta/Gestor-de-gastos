@@ -9,7 +9,7 @@ class Gasto:
             raise ValueError(f'El monto debe ser mayor a cero: {monto}')
 
         if not isinstance(categoria, str):
-            raise TypeError(f'La categoria debe ser un exto: {categoria}')
+            raise TypeError(f'La categoria debe ser un texto: {categoria}')
         
         if not categoria.strip():
             raise ValueError(f'La categoria no puede estar vacia: {categoria}')
@@ -21,7 +21,6 @@ class Gasto:
 
     @classmethod
     def desde_diccionario(cls, datos):
-        
         if isinstance(datos['fecha'], str):
             fecha_limpia = date.fromisoformat(datos['fecha'])
         else:
@@ -39,10 +38,17 @@ class Gasto:
             'descripcion': self.descripcion,
             'fecha': self.fecha.isoformat()
               }
+class Cuenta:
+    def __init__(self,nombre, gastos=None):
+
+
+
+
+
 if __name__ == "__main__":
     g1 = Gasto(150.5, "comida", "tacos", date(2026, 10, 13))
     d = g1.a_diccionario()
     g2 = Gasto.desde_diccionario(d)
     print(g1)
     print(g2)
-    print(g1.a_diccionario() == g2.a_diccionario())   # debe dar True
+    print(g1.a_diccionario() == g2.a_diccionario())
