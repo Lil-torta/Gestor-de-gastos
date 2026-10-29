@@ -39,11 +39,30 @@ class Gasto:
             'fecha': self.fecha.isoformat()
               }
 class Cuenta:
-    def __init__(self,nombre, gastos=None):
+    def __init__(self,nombre):
+        self.nombre = nombre
+        self.gastos = []
 
+    def agregar_gasto(self, gasto):
+        if not isinstance(gasto, Gasto):
+            raise TypeError(f'Solo se pueden agregar objetos del tipo Gasto')
 
+        self.gastos.append(gasto)
 
+    def total(self):
+        suma_total = 0
+        for gasto in self.gastos:
+            suma_total += gasto.monto
+        return suma_total
 
+    def total_por_categoria(self):
+        total = {} 
+        for gasto in self.gastos:
+            categoria = gasto.categoria
+            monto = gasto.monto
+            total[categoria] = total.get(categoria, 0) + monto
+        return total
+    
 
 if __name__ == "__main__":
     g1 = Gasto(150.5, "comida", "tacos", date(2026, 10, 13))
