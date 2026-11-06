@@ -1,5 +1,8 @@
 from datetime import date
+import json
 
+# Normalizar la categoria, mejorar usando .strip.lower o capitalize
+# Gasto(true ) pasa la validacion, mejorar con isinstance(True, int) y exclusion de bool
 class Gasto:
     def __init__(self, monto, categoria, descripcion, fecha):
         if not isinstance(monto, (int, float)):
@@ -38,6 +41,9 @@ class Gasto:
             'descripcion': self.descripcion,
             'fecha': self.fecha.isoformat()
               }
+# Mejorar mensaje incluyendo type(gasto).__name__.
+# Mejorar u convencion _gastos
+#Usae sum() en total_por_categoria
 class Cuenta:
     def __init__(self,nombre):
         self.nombre = nombre
@@ -62,12 +68,48 @@ class Cuenta:
             monto = gasto.monto
             total[categoria] = total.get(categoria, 0) + monto
         return total
-    
+    def guardar(self, ruta):
+        datos = {
+            "nombre": self.nombre,
+            'gastos':[gasto.a_diccionario() for gasto in self.gastos]
+        }
+        with open(ruta, 'w', encoding="utf-8") as f:
+            json.dump(datos, f, indent=2, ensure_ascii=False)
 
+    @classmethod
+    def cargar(cls, ruta):
+        with open(ruta, 'r', encoding="utf-8") as f:
+           datos = json.load(f)
+        cuenta = cls(datos['nombre'])
+
+        for dato in datos['gastos']:
+            gasto = Gasto.desde_diccionario(dato)
+            cuenta.agregar_gasto(gasto)
+        return cuenta
 if __name__ == "__main__":
+    cuenta = Cuenta("Cuenta personal")
+
     g1 = Gasto(150.5, "comida", "tacos", date(2026, 10, 13))
-    d = g1.a_diccionario()
-    g2 = Gasto.desde_diccionario(d)
-    print(g1)
-    print(g2)
-    print(g1.a_diccionario() == g2.a_diccionario())
+    g2 = Gasto(80, "transporte", "uber", date(2026, 10, 14))
+    g3 = Gasto(250, "educación", "curso Python", date(2026, 10, 15))
+
+    cuenta.agregar_gasto(g1)
+    cuenta.agregar_gasto(g2)
+    cuenta.agregar_gasto(g3)
+
+    cuenta.guardar("gastos.json")
+
+    print(cuenta.total())
+    print(cuenta.total_por_categoria())
+    cuenta_cargada = Cuenta.cargar("gastos.json")
+
+print(cuenta_cargada.total())
+print(cuenta_cargada.total_por_categoria())
+
+print(cuenta.total() == cuenta_cargada.total())
+
+print(
+    cuenta.total_por_categoria()
+    ==
+    cuenta_cargada.total_por_categoria()
+)
