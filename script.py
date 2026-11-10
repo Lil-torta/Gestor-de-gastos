@@ -43,7 +43,7 @@ class Gasto:
               }
 # Mejorar mensaje incluyendo type(gasto).__name__.
 # Mejorar u convencion _gastos
-#Usae sum() en total_por_categoria
+#Usae sum() en total()
 class Cuenta:
     def __init__(self,nombre):
         self.nombre = nombre
@@ -96,20 +96,25 @@ if __name__ == "__main__":
     cuenta.agregar_gasto(g1)
     cuenta.agregar_gasto(g2)
     cuenta.agregar_gasto(g3)
-
-    cuenta.guardar("gastos.json")
+    
+    cuenta.guardar("glatos.json")
 
     print(cuenta.total())
     print(cuenta.total_por_categoria())
-    cuenta_cargada = Cuenta.cargar("gastos.json")
-
-print(cuenta_cargada.total())
-print(cuenta_cargada.total_por_categoria())
-
-print(cuenta.total() == cuenta_cargada.total())
-
-print(
-    cuenta.total_por_categoria()
-    ==
-    cuenta_cargada.total_por_categoria()
-)
+    cuenta_cargada = Cuenta.cargar('gastos.json')
+    cuenta == cuenta_cargada
+    
+    print(cuenta_cargada.total())
+    print(cuenta_cargada.total_por_categoria())
+    
+    print(cuenta.total() == cuenta_cargada.total())
+    
+    print(
+        cuenta.total_por_categoria()
+        ==
+        cuenta_cargada.total_por_categoria()
+        )
+    assert cuenta.nombre == cuenta_cargada.nombre, 'Los nombres no coinciden'
+    lista = [gasto.a_diccionario() for gasto in cuenta.gastos]
+    lista2 = [gasto.a_diccionario() for gasto in cuenta_cargada.gastos]
+    assert lista == lista2, 'los gastos son diferentes'
