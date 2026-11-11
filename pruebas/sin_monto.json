@@ -2,19 +2,16 @@
   "nombre": "Cuenta personal",
   "gastos": [
     {
-      "monto": 150.5,
       "categoria": "comida",
       "descripcion": "tacos",
       "fecha": "2026-10-13"
     },
     {
-      "monto": 80,
       "categoria": "transporte",
       "descripcion": "uber",
       "fecha": "2026-10-14"
     },
     {
-      "monto": 250,
       "categoria": "educación",
       "descripcion": "curso Python",
       "fecha": "2026-10-15"

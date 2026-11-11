@@ -5,19 +5,19 @@
       "monto": 150.5,
       "categoria": "comida",
       "descripcion": "tacos",
-      "fecha": "2026-10-13"
+      "fecha": "13/10/2026"
     },
     {
       "monto": 80,
       "categoria": "transporte",
       "descripcion": "uber",
-      "fecha": "2026-10-14"
+      "fecha": "14/10/2026"
     },
     {
       "monto": 250,
       "categoria": "educación",
       "descripcion": "curso Python",
-      "fecha": "2026-10-15"
+      "fecha": "15/10/2026"
     }
   ]
 }

@@ -97,12 +97,16 @@ if __name__ == "__main__":
     cuenta.agregar_gasto(g2)
     cuenta.agregar_gasto(g3)
     
-    cuenta.guardar("glatos.json")
+    cuenta.guardar("gastos.json")
 
     print(cuenta.total())
     print(cuenta.total_por_categoria())
-    cuenta_cargada = Cuenta.cargar('gastos.json')
-    cuenta == cuenta_cargada
+    #cuenta_cargada = Cuenta.cargar('gastos.json')
+    #cuenta_cargada = Cuenta.cargar('sin_monto.json')
+    cuenta_cargada = Cuenta.cargar('fecha_mala.json')
+    #cuenta_cargada = Cuenta.cargar('sin_existencia.json')
+    #cuenta_cargada = Cuenta.cargar('corrupto.json')
+    #cuenta_cargada = cuenta.cargar('monto_negativo.json')
     
     print(cuenta_cargada.total())
     print(cuenta_cargada.total_por_categoria())
